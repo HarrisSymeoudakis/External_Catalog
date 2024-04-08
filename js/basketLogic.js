@@ -48,10 +48,12 @@ function getToken(callback) {
 
 document.getElementById('testBut').addEventListener('click', function(event) {
     // var parameter1 = event.target.getAttribute('data-parameter1');
+	console.log('entered testBut...');
     var value = event.target.getAttribute('item-value');
     var item = event.target.getAttribute('item');
 
     getToken(function(error, accessToken) {
+		console.log('inside getToken(function)...');
         if (error) {
             console.error('Error:', error);
         } else {
