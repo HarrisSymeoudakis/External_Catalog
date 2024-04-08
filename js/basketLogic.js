@@ -15,7 +15,7 @@ postButtonDemoElements.forEach(function(button) {
 
 document.getElementById('liveStoreBasket').addEventListener('click', function() {
 
-    window.location.href = 'https://retail-services.cegid.cloud/t/pos/external-basket/04f57001-25a7-4cc5-84b4-565b65cd268d';
+    window.location.href = 'https://retail-services.cegid.cloud/t/pos/external-basket/b7ee32b5-cd60-45e9-98c4-394802fcd25f';
 });
 
 
