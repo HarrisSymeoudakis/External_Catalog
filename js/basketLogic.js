@@ -6,6 +6,11 @@ window.onload = function() {
 };
 let accessToken;
 
+fetch('https://extcatalog-server.onrender.com/items/getAllCatalog')
+		.then(response => response.json())
+		.then(data => {console.log(data)});
+
+
 document.addEventListener('DOMContentLoaded', async function() {
     try {
         accessToken = await getToken(); // Assign access token retrieved from getToken to the global accessToken variable
