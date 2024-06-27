@@ -3,7 +3,7 @@ fetch('https://extcatalog-server.onrender.com/items/getAllCatalog')
 		.then(response => response.json())
 		.then(data => {console.log(data)
 			   const image = document.getElementById('myImage');
-image.src = data.imageURL;    
+image.src = data;    
 			      });
 
 
