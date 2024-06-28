@@ -6,9 +6,9 @@ fetch('https://extcatalog-server.onrender.com/items/getAllCatalog')
 			       const reader= new FileReader();
 				   
 			       reader.addEventListener("load",function(){
-				       image.src = reader.data;},false);
+				       image.src = reader.result;},false);
 			       if ( data) {
-				       reader.readAsDataURL(data);}
+				       reader.readAsDataURL(data.imageURL);}
 			      });
 
 
