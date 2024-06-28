@@ -15,10 +15,10 @@
       async function fetchAndSetImage(itemCode) {
           try {
               const response = await fetch(`https://extcatalog-server.onrender.com/items/Image?itemCode=${encodeURIComponent(itemCode)}`);
-			  console.log('image response from catalog form: ', response.url)
+	  	console.log('image response from catalog form: ', response)
 				
               const img = document.getElementById('first-image');
-              img.src = response.url;
+              img.src = response;
           } catch (error) {
               console.error('Error fetching the image:', error);
           }
