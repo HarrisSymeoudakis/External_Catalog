@@ -6,7 +6,7 @@ fetch('https://extcatalog-server.onrender.com/items/getAllCatalog')
 		});
 
 fetch('https://extcatalog-server.onrender.com/items/Image')
-		.then(response => response.json())
+		
 		.then(data => {	console.log(data);
 			   	
 		});
