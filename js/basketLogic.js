@@ -2,18 +2,7 @@
 fetch('https://extcatalog-server.onrender.com/items/getAllCatalog')
 		.then(response => response.json())
 		.then(data => {	console.log(data);
-			   	const image = document.getElementById('myImage');
-			       	const reader= new FileReader();
-				   
-			       	reader.addEventListener("load",function(){
-					console.log("!");
-				       image.src = reader.result;
-				},false);
-			       
-			       if ( data) {
-				       console.log(data.imageURL);
-				       reader.readAsDataURL(data.imageURL);
-			       }
+			   	
 		});
 
 
