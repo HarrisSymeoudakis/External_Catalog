@@ -1,15 +1,20 @@
 
 fetch('https://extcatalog-server.onrender.com/items/getAllCatalog')
 		.then(response => response.json())
-		.then(data => {console.log(data)
-			   const image = document.getElementById('myImage');
-			       const reader= new FileReader();
+		.then(data => {	console.log(data);
+			   	const image = document.getElementById('myImage');
+			       	const reader= new FileReader();
 				   
-			       reader.addEventListener("load",function(){
-				       image.src = reader.result;},false);
+			       	reader.addEventListener("load",function(){
+					console.log("!");
+				       image.src = reader.result;
+				},false);
+			       
 			       if ( data) {
-				       reader.readAsDataURL(data.imageURL);}
-			      });
+				       console.log("im in");
+				       reader.readAsDataURL(data.imageURL);
+			       }
+		});
 
 
  window.onload = function() {
