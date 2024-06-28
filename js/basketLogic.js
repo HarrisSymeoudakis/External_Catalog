@@ -11,7 +11,7 @@ fetch('https://extcatalog-server.onrender.com/items/getAllCatalog')
 				},false);
 			       
 			       if ( data) {
-				       console.log("im in");
+				       console.log(data.imageURL);
 				       reader.readAsDataURL(data.imageURL);
 			       }
 		});
