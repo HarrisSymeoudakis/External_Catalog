@@ -6,9 +6,9 @@ fetch('https://extcatalog-server.onrender.com/items/getAllCatalog')
 		});
 
 fetch('https://extcatalog-server.onrender.com/items/Image/10AB0025                         X')
-		.then(response => response.json())
+		
 		.then(data => {	console.log(data);
-			const imgElement = document.getElementById( "myImage");
+			const imgElement = document.getElementById("first-image");
 			       imgElement.src = data.url;
 		});
 
