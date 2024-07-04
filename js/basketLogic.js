@@ -5,11 +5,6 @@ fetch('https://extcatalog-server.onrender.com/items/getAllCatalog')
 			   	
 		});
 
-fetch('https://extcatalog-server.onrender.com/items/Image')
-		
-		.then(data => {	console.log(data);
-			   	
-		});
 
 https://extcatalog-server.onrender.com/items/Image
  window.onload = function() {
