@@ -5,7 +5,7 @@ fetch('https://extcatalog-server.onrender.com/items/getAllCatalog')
 			   	
 		});
 
-fetch('https://extcatalog-server.onrender.com/items/Image')
+fetch('https://extcatalog-server.onrender.com/items/Image/10AB0025                         X')
 		
 		.then(data => {	console.log(data);
 			   	
