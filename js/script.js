@@ -47,7 +47,7 @@ async function fetchAndDisplayOrders() {
       "https://localhost:2999/items"
     );
     const data = await response.json();
-
+ console.log("tiii");
     console.log(data);
 
     // Iterate over each item and filter based on search criteria
