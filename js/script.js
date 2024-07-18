@@ -44,7 +44,7 @@ async function fetchAndDisplayOrders() {
   try {
     // Fetch items data from API
     const response = await fetch(
-      "https://extcatalog-mq-wempe-server.onrender.com/items"
+      "http://localhost:2999/items"
     );
     const data = await response.json();
  console.log("tiii");
