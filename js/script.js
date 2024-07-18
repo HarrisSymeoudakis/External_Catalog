@@ -104,6 +104,7 @@ async function fetchAndDisplayOrders() {
       // Generate portfolio item HTML if all filters pass
     });
   } catch (error) {
+    console.log("tiii");
     console.error("Error fetching or generating items:", error);
   }
 
