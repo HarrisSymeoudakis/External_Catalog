@@ -357,7 +357,7 @@ let uniqueCodes = new Set();
 async function fetchAndGeneratePortfolioItems() {
   try {
     const response = await fetch(
-      "https://extcatalog-mq-server.onrender.com/items"
+      "https://extcatalog-mq-wempe-server.onrender.com/items"
     );
     const data = await response.json();
 
