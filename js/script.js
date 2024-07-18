@@ -1,118 +1,169 @@
 function searchOnClick(event) {
-  event.preventDefault(); // Prevent form submission
-  fetchAndDisplayOrders();
-}
-
-// Attach searchOnClick function to search button click event
-document
-  .getElementById("searchButton")
-  .addEventListener("click", searchOnClick);
-
-// Function to fetch data and display portfolio items
-async function fetchAndDisplayOrders() {
-  const portfolioItemsContainer = document.getElementById("portfolioItems");
-  portfolioItemsContainer.innerHTML = ""; // Clear previous portfolio items
-
-  // Get input values from form fields
-  const itemCodeInput = document
-    .getElementById("input1")
-    .value.trim()
-    .toLowerCase();
-  const descriptionInput = document
-    .getElementById("input2")
-    .value.trim()
-    .toLowerCase();
-  const barcodeInput = document
-    .getElementById("input3")
-    .value.trim()
-    .toLowerCase();
-  const weeCostInput = document
-    .getElementById("input4")
-    .value.trim()
-    .toLowerCase();
-  const priceFromInput = parseInt(
-    document.getElementById("input5").value.trim(),
-    10
-  );
-  const priceToInput = parseInt(
-    document.getElementById("input6").value.trim(),
-    10
-  );
-
-  const searchBarInput = document.getElementById("search").value;
-
-  try {
-    // Fetch items data from API
-    const response = await fetch(
-      "https://extcatalog-mq-wempe-server.onrender.com/items"
-    );
-    const data = await response.json();
- console.log("tiii");
-    console.log(data);
-
-    // Iterate over each item and filter based on search criteria
-    data.forEach((item) => {
-      const itemCode = item.identifier.id;
-      const barcode = item.identifier.barcode;
-      const description = item.description;
-      const price = item.price.taxIncludedPrice;
-      const imgUrl = item.imgUrl;
-      const warehouseId = item.warehouse.id;
-      const onStock = item.warehouse.availableQty;
-      const userFields = item.userFields;
-      const weeCost = userFields[0].value.text; // Safely access weeCost
-      //  console.log(userFields[1].value.text);
-      const userFields2 = parseFloat(userFields[1].value.number); // Safely access userFields2
-      console.log(userFields[1]);
-      // console.log(userFields2);
-      // console.log(barcodeInput);
-      // Apply filters based on input values
-      if (
-        (itemCodeInput !== "" &&
-          !itemCode.toLowerCase().includes(itemCodeInput.toLowerCase())) ||
-        (descriptionInput !== "" &&
-          !description
-            .toLowerCase()
-            .includes(descriptionInput.toLowerCase())) ||
-        (barcodeInput !== "" && !barcode.includes(barcodeInput)) ||
-        (weeCostInput !== "" &&
-          weeCost.toLowerCase() !== weeCostInput.toLowerCase()) ||
-        (!isNaN(priceFromInput) && price < priceFromInput) ||
-        (!isNaN(priceToInput) && price > priceToInput)
-      ) {
-        return; // Skip this iteration if any filter condition fails
-      }
-
-      if (
-        searchBarInput == "" ||
-        itemCode.toLowerCase().includes(searchBarInput) ||
-        description.toLowerCase().includes(searchBarInput) ||
-        barcode.includes(searchBarInput) ||
-        weeCost.toLowerCase().includes(searchBarInput)
-      ) {
-        generatePortfolioItem(
-          itemCode,
-          description,
-          imgUrl,
-          price,
-          userFields2,
-          warehouseId,
-          onStock
-        );
-      }
-
-      // Generate portfolio item HTML if all filters pass
-    });
-  } catch (error) {
-    console.log("tiii");
-    console.error("Error fetching or generating items:", error);
+    event.preventDefault(); // Prevent form submission
+    fetchAndDisplayOrders();
   }
-
-  // Set timeouts for additional functions
-  setTimeout(initiateFastBuy, 500);
-  setTimeout(initiateAddToCart, 500);
-  setTimeout(initiateRemove, 500);
-}
+  
+  // Attach searchOnClick function to search button click event
+  document
+    .getElementById("searchButton")
+    .addEventListener("click", searchOnClick);
+  
+  // Function to fetch data and display portfolio items
+  async function fetchAndDisplayOrders() {
+    const portfolioItemsContainer = document.getElementById("portfolioItems");
+    portfolioItemsContainer.innerHTML = ""; // Clear previous portfolio items
+  
+    // Get input values from form fields
+    const itemNumber = document
+      .getElementById("input1")
+      .value.trim()
+      .toLowerCase();
+    const itemType = document
+      .getElementById("input2")
+      .value.trim()
+      .toLowerCase();
+    const manufacturerCode = document
+      .getElementById("input3")
+      .value.trim()
+      .toLowerCase();
+      const line = document
+      .getElementById("input4")
+      .value.trim()
+      .toLowerCase();
+    const family = document
+      .getElementById("input5")
+      .value.trim()
+      .toLowerCase();
+    const itemGroup = document
+      .getElementById("input6")
+      .value.trim()
+      .toLowerCase();
+      const caseMaterial = document
+      .getElementById("input7")
+      .value.trim()
+      .toLowerCase();
+    const characteristics = document
+      .getElementById("input8")
+      .value.trim()
+      .toLowerCase();
+    const venderNo = document
+      .getElementById("input9")
+      .value.trim()
+      .toLowerCase();
+   
+    const priceMin = parseInt(
+      document.getElementById("input10").value.trim(),
+      10
+    );
+    const priceMax = parseInt(
+      document.getElementById("input11").value.trim(),
+      10
+    );
+  
+    const searchBarInput = document.getElementById("search").value;
+  
+    try {
+      // Fetch items data from API
+      const response = await fetch(
+        "https://extcatalog-mq-wempe-server.onrender.com/items"
+      );
+      const data = await response.json();
+   console.log("tiii");
+      console.log(data);
+  
+      // Iterate over each item and filter based on search criteria
+      data.forEach((item) => {
+        const itemCode = item.identifier.id;
+        
+        const description = item.description;
+        const price = item.price.taxIncludedPrice;
+        const imgUrl = item.imgUrl;
+        const warehouseId = item.warehouse.id;
+        const onStock = item.warehouse.availableQty;
+        const userFields = item.userFields;
+        const itemNumberField = item.identifier.barcode; // Safely access weeCost
+        const itemTypeField = userFields[0].value.text;
+        const manufacturerCodeField = userFields[58].value.text;
+        const lineField = userFields[47].value.text;
+        const familyField = userFields[48].value.text;
+        const itemGroupField = userFields[50].value.text;
+        const caseMaterialField = userFields[0].value.text;
+        const characteristicsField = userFields[7].value.text;
+        const venderNumberField = userFields[57].value.text;
+        //  console.log(userFields[1].value.text);
+        const userFields2 = parseFloat(userFields[1].value.number); // Safely access userFields2
+        console.log(userFields[1]);
+        // console.log(userFields2);
+        // console.log(barcodeInput);
+        // Apply filters based on input values
+        if (
+          (itemNumber !== "" &&
+            !itemNumberField.toLowerCase().includes(itemNumber.toLowerCase())) ||
+  
+            (manufacturerCode !== "" &&
+            !manufacturerCodeField.toLowerCase().includes(manufacturerCode.toLowerCase())) ||
+  
+            (line !== "" &&
+            !lineField.toLowerCase().includes(line.toLowerCase())) ||
+  
+            (family !== "" &&
+            !familyField.toLowerCase().includes(family.toLowerCase())) ||
+  
+            (itemGroup !== "" &&
+            !itemGroupField.toLowerCase().includes(itemGroup.toLowerCase())) ||
+  
+            (caseMaterial !== "" &&
+            !caseMaterialField.toLowerCase().includes(caseMaterial.toLowerCase())) ||
+  
+            (characteristics !== "" &&
+            !characteristicsField.toLowerCase().includes(characteristics.toLowerCase())) ||
+  
+            (venderNo !== "" &&
+            !venderNumberField.toLowerCase().includes(venderNo.toLowerCase())) ||
+  
+          (!isNaN(priceMin) && price < priceMin) ||
+          (!isNaN(priceMax) && price > priceMax)
+        ) {
+          return; // Skip this iteration if any filter condition fails
+        }
+  
+        if (
+          searchBarInput == "" ||
+          itemNumberField.toLowerCase().includes(searchBarInput) ||
+          manufacturerCodeField.toLowerCase().includes(searchBarInput) ||
+          lineField.toLowerCase().includes(searchBarInput) ||
+          familyField.toLowerCase().includes(searchBarInput) ||
+          itemGroupField.toLowerCase().includes(searchBarInput) ||
+          caseMaterialField.toLowerCase().includes(searchBarInput) ||
+          characteristicsField.toLowerCase().includes(searchBarInput) ||
+          venderNumberField.toLowerCase().includes(searchBarInput) 
+          
+        ) {
+          generatePortfolioItem(
+            itemCode,
+            description,
+            imgUrl,
+            price,
+            lineField,
+            familyField,
+            warehouseId,
+            onStock
+          );
+        }
+  
+        // Generate portfolio item HTML if all filters pass
+      });
+    } catch (error) {
+      console.log("tiii");
+      console.error("Error fetching or generating items:", error);
+    }
+  
+    // Set timeouts for additional functions
+    setTimeout(initiateFastBuy, 500);
+    setTimeout(initiateAddToCart, 500);
+    setTimeout(initiateRemove, 500);
+  }
+  
 
 function addToCart(
   itemCodeVar,
@@ -306,7 +357,7 @@ let uniqueCodes = new Set();
 async function fetchAndGeneratePortfolioItems() {
   try {
     const response = await fetch(
-      "https://extcatalog-mq-wempe-server.onrender.com/items"
+      "https://extcatalog-mq-server.onrender.com/items"
     );
     const data = await response.json();
 
