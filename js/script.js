@@ -436,7 +436,7 @@ let finalItems = "";
 window.onload = function () {
   localStorage.setItem("cartItems", JSON.stringify([]));
 };
-let accessToken;
+let accessToken; 
 
 document.addEventListener("DOMContentLoaded", async function () {
   try {
