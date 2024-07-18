@@ -278,8 +278,8 @@ function generatePortfolioItem(
                                 <h2 class="text-uppercase">${description}</h2>
                                 <h3>Item Code: ${itemCode}</h3>
                                 <p>Price: ${price}</p>
-                                <p>WEEE Cost: ${userF1}</p>
-                                <p>WEEE Amount: ${userF2}</p>
+                                <p>Line: ${userF1}</p>
+                                <p>Family: ${userF2}</p>
                                 <p>On Stock: ${onStock}</p>
                             </div>
                             <div class="d-flex justify-content-between">
