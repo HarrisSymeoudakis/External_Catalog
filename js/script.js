@@ -129,6 +129,7 @@ function searchOnClick(event) {
   
         if (
           searchBarInput == "" ||
+            itemCode.toLowerCase().includes(searchBarInput) ||
           description.toLowerCase().includes(searchBarInput) ||
           itemNumberField.toLowerCase().includes(searchBarInput) ||
           manufacturerCodeField.toLowerCase().includes(searchBarInput) ||
