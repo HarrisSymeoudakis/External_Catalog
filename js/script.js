@@ -693,7 +693,7 @@ document.getElementById("viewBasketAll").addEventListener("click", function () {
     item.itemLineId = index + 1; // Increment index by 1
   });
 
-  var customerId = "BR00100002";
+  var customerId = "HAM0100009";
   var postData = {
     externalReference: "SimpleSale",
     basketType: "RECEIPT",
